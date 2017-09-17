@@ -1,14 +1,14 @@
-import '../style/index.styl';
-import hamster_img_url from '../images/hamster.jpg';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-//import npm packages, node modules, other files here
+import App from './App';
 
-window.addEventListener('load', function() {
-    const p = document.createElement('p');
-    p.innerHTML = 'hello world';
-    document.body.insertBefore(p, document.body.firstChild);
+// // import { Provider } from 'react-redux';
+// // import { createStore, applyMiddleware } from 'redux';
 
-    const img = document.createElement('img');
-    img.src = hamster_img_url;
-    document.body.insertBefore(img, document.body.firstChild);
-});
+// // import reducers from './reducers';
+
+// // const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+
+ReactDOM.render(<App></App>, document.querySelector('.container'));

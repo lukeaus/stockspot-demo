@@ -1,10 +1,16 @@
 #!/bin/bash
 source bin/env.sh
 
+
+# fix so using dctest
+dcdev build
+
 if ! [[ $* == *--skipbuild* ]]; then
     ./bin/build_frontend.sh
 else
     echo "skipping frontend build..."
 fi
 
-dctest run --rm  django ./bin/test.sh "$@"
+
+# fix so using dctest
+dcdev run --rm  django ./bin/test.sh "$@"

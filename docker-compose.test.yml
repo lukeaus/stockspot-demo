@@ -1,5 +1,20 @@
 version: '3'
+
+volumes:
+    data:
+
 services:
+    db:
+        container_name: db
+        image: postgres:9.6
+        environment:
+            POSTGRES_USER: django
+            POSTRES_PASSWORD: django
+        volumes:
+            - data:/var/lib/postgresql/data
+        ports:
+            - "9432:5432"
+
     django:
         build: ./backend
         volumes:
@@ -19,5 +34,5 @@ services:
 
     selenium:
         image: selenium/standalone-chrome-debug:2.53.0
-        ports: 
+        ports:
             - 5900:5900

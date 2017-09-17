@@ -1,23 +1,72 @@
+# Get started
+```shell
+./bin/setup.sh
+```
+
+### Stop
+```control + c```
+If you get impatient after waiting more than 30 seconds, press ```control + c``` again (and again)
+
+### Start the server again
+```bin
+./bin/develop.sh
+```
+
+
+## Urls
+Don't forget the trailing backslash
+
+### Django Admin
+http://0.0.0.0:8000/admin/
+
+### API
+http://0.0.0.0:8000/api/
+
+### Frontend
+http://0.0.0.0:8000
+
+
+## Testing
+### Backend
+```shell
+./bin/django.sh test
+```
+
+## Troubleshooting
+### Inconsistent database state
+Shut down all existing containers for this app using ```control-c```
+
+Then run this
+```bin
+./bin/django.sh reset_db
+./bin/setup.sh
+```
+
+___
+
+Boilerplate kindly provided by https://github.com/domasx2/docker-django-webpack-starter.git
+with some hacks to get it running!
+
 # docker-django-webpack-starter
 
-This is a starter project for a django app with webpack built frontend that uses docker for dev enironment.  
+This is a starter project for a django app with webpack built frontend that uses docker for dev enironment.
 Docker and docker-compose is all you need to develop, build & deploy, run development or production mode with a single command.
 
 ## stack
-python 3.5  
-node 5.10  
-Postgres 9.5  
+python 3.5
+node 5.10
+Postgres 9.5
 Django  1.10.5
-Webpack  
-Stylus   
-Nginx  
+Webpack
+Stylus
+Nginx
 Gunicorn
 
 
 ## get started
 
-Get latest docker & docker-compose:  
-https://www.docker.com/  
+Get latest docker & docker-compose:
+https://www.docker.com/
 https://docs.docker.com/compose/
 
 Pull seed to your project:
@@ -49,7 +98,7 @@ Wait for docker to set up container, then open [http://localhost:8000](http://lo
 In prod mode sources are added to docker image rather than mounted from host. Nginx serves static files, proxy pass to gunicorn for django app. Logs in `logs` dir.
 
 #### enable ssl
-Copy your .key and .crt files to `nginx/ssl` and run `./bin/deploy.sh`. 
+Copy your .key and .crt files to `nginx/ssl` and run `./bin/deploy.sh`.
 
 ## install dependencies
 ```sh
@@ -64,7 +113,7 @@ Copy your .key and .crt files to `nginx/ssl` and run `./bin/deploy.sh`.
 
 ```sh
 # create a backup in backups dir
-./bin/backup.sh 
+./bin/backup.sh
 
 # restore from a backup in backups dir (server must be stopped)
 ./bin/restore.sh backups/somebackup.bak
@@ -99,7 +148,7 @@ frontend/                     - frontend stuff
 frontend/package.json         - npm package file with frotnend dependencies
 frontend/src/js/              - javascript code
 frontend/src/js/index.js      - js entry point. include other js deps here
-frontend/src/style/           - stylesheets       
+frontend/src/style/           - stylesheets
 frontend/src/style/index.styl - stylesheet entry point. include other styl files here
 
 backend/                      - backend stuff
@@ -122,16 +171,17 @@ nginx/nginx_ssl.conf          - nginx conf for deploy with ssl
 
 ## tests
 
-For e2e tests, use `app.testutils.SeleniumTestCase` class it comes with chrome driver configure at `self.driver`. See `apps.home.tests` for an example.  
+For e2e tests, use `app.testutils.SeleniumTestCase` class it comes with chrome driver configure at `self.driver`. See `apps.home.tests` for an example.
 See http://selenium-python.readthedocs.io/ for selenium driver api
 
 ```sh
 
 #run tests
+For some reason the command ./bin/test.sh is not working as documented
 ./bin/test.sh
 
 # skip frontend build (eg, running tests repeatedly)
-./bin/test.sh --skipbuild 
+./bin/test.sh --skipbuild
 
 
 To debug tests it's possible to vnc into selenium container while its running at localhost:5900 and view the browser. Password is `secret`.

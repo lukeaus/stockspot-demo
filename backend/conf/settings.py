@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^h85uo#*&q+5r=a1_l8i_&t$^$(sgsz-3*ijq8%22ayrbapxyk'
+SECRET_KEY = 'NotASecret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -28,7 +28,9 @@ DEBUG = True
 #load frontend from webpack dev server rather than static
 WEBPACK_DEV_SERVER = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+]
 
 
 # Application definition
@@ -40,8 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'apps.home'
+    'rest_framework',
+    'django_extensions',
+    'apps.home.apps.HomeConfig',
+    'apps.users.apps.UsersConfig',
+    'apps.clients.apps.ClientsConfig',
+    'apps.transactions.apps.TransactionsConfig',
+    'apps.securities.apps.SecuritiesConfig',
+    'apps.advisors.apps.AdvisorsConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -76,6 +84,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wsgi.application'
 
+AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 50,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -85,11 +102,38 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
         'USER': 'django',
+        # 'NAME': 'backend',
+        # 'USER': 'postgres',
         'HOST': 'db',
         'PORT': 5432,
     }
 }
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'apps': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'py.warnings': {
+            'handlers': ['console'],
+        },
+    },
+}
 
 
 # Password validation

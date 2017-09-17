@@ -16,7 +16,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'applogfile': {
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'class': 'logging.FileHandler',
             'filename': '/tmp/logs/app/app.log',
         },
