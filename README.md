@@ -1,4 +1,12 @@
 # Get started
+
+Get latest docker & docker-compose first:
+
+https://www.docker.com/
+
+https://docs.docker.com/compose/
+
+Next
 ```shell
 ./bin/setup.sh
 ```
