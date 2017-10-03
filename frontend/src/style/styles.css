@@ -1,0 +1,67 @@
+@import '../../node_modules/react-activity/lib/Dots/Dots.css';
+
+body {
+    background-color: #F3F5F6;
+}
+
+.container {
+    /* override bootstrap 4 funnines */
+    width: 100%
+}
+
+#fees > h4 {
+    margin-top: 20px;
+}
+
+#amount-input-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 200px;
+}
+
+#fees-calc {
+    margin-bottom: 10px;
+}
+
+.pricing-card {
+    margin: 0 auto 10px auto;
+    min-height: 250px;
+    width: 250px;
+    float: none;
+}
+
+.pricing-card-header > div:first-child {
+    padding-right: 0 !important;
+}
+
+.pricing-card-invest-range {
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.pricing-card-num-inline, .pricing-num-inline {
+    margin-left: 5px;
+}
+
+.pricing-card-fineprint, .pricing-fineprint {
+    font-size: 9pt;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.pricing-card-label, .pricing-label {
+    font-weight: bold;
+}
+
+.fee-plans {
+    max-width: 1200px;
+}
+
+.badge-pill {
+    position: relative;
+    top: -2px;
+}
+
+.badge-wrapper {
+    margin-top: 2px;
+}

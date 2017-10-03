@@ -31,6 +31,7 @@ http://0.0.0.0:8000/admin/
 http://0.0.0.0:8000/api/
 
 ### Frontend
+Please give this a while to boot up. Make sure you wait til webpack_dev is listening.
 http://0.0.0.0:8000
 
 
@@ -38,6 +39,11 @@ http://0.0.0.0:8000
 ### Backend
 ```shell
 ./bin/django.sh test
+```
+
+### Frontend
+```shell
+./bin/npm.sh run test
 ```
 
 ## Troubleshooting
